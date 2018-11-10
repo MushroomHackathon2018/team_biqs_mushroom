@@ -1,0 +1,72 @@
+
+<div id="page-container" class="modern-sf">
+
+     <!-- Header -->
+     <header id="page-header">
+            <div class="h3 text-right pull-right hidden-xs">
+                <div class="text-crystal font-w300">请登陆</div>
+                <!-- <div class="text-success animated infinite pulse pull-right">[LIVE]</div> -->
+            </div>
+            <h1 class="h3 font-w200">
+                <span class="text-crystal">//</span> <a class="link-sf font-w300" >迅达未来电梯</a>
+            </h1>
+        </header>
+
+
+        <main id="page-main">
+            <div class="row">
+                    <div class="col-lg-6 col-lg-push-3 overflow-hidden push-20">
+                            <div class="circles push-50">
+                                <div  data-toggle="appear" data-class="animated fadeIn">
+                                    <span class="circle circle-0"></span>
+                                </div>
+                                <div  data-toggle="appear" data-class="animated fadeIn" data-timeout="100">
+                                    <span class="circle circle-1"></span>
+                                </div>
+                                <div  data-toggle="appear" data-class="animated fadeIn" data-timeout="200">
+                                    <span class="circle circle-2"></span>
+                                </div>
+                                <div  data-toggle="appear" data-class="animated fadeIn" data-timeout="300">
+                                    <span class="circle circle-3"></span>
+                                </div>
+                                <div  data-toggle="appear" data-class="animated fadeIn" data-timeout="400">
+                                    <span class="circle circle-4"></span>
+                                </div>
+                                <div  data-toggle="appear" data-class="animated fadeIn" data-timeout="500">
+                                    <span class="circle circle-5"></span>
+                                </div>
+                                <div  data-toggle="appear" data-class="animated fadeIn" data-timeout="600">
+                                    <span class="circle circle-6"></span>
+                                </div>
+                                <div  data-toggle="appear" data-class="animated fadeIn" data-timeout="800">
+                                    <span class="circle circle-over-1 hidden-xs"><span data-toggle="countTo" data-to="798" data-speed="100000"></span></span>
+                                    <span class="circle circle-over-2 hidden-xs"></span>
+                                    <span class="circle circle-over-3 hidden-xs"></span>
+                                </div>
+                                <span class="circle circles-main-content visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="100">
+                                    <span data-toggle="countTo" data-to="16540" data-speed="60000"></span><br>
+                                    <span class="text-crystal">km/h</span>
+                                </span>
+                            </div>
+                            <video id="screenshot-video" [style.display]="videoDisplay" autoplay></video>
+                            <div id="login-button" *ngIf="!loginStatus" class="col-xs-6 login-button" style="width:150px" data-class="animated fadeInLeft" data-timeout="100">
+                                    <button (click)="start_login()" style="text-align: center" class="btn btn-xl btn-block btn-sf push-10">登录</button>
+                                </div>
+                        </div>
+
+                        <div id="login-status" *ngIf="loginStatus" class="col-xs-6 login-status"  data-class="animated fadeInLeft" data-timeout="100">
+                                <button style="text-align: center" class="btn btn-xl btn-block btn-sf push-10">{{message}}</button>
+                            </div>
+            </div>
+               
+        </main>
+        <!-- END Header -->
+        
+
+
+            <div class="block">
+                    <div style="padding-top: 10px;padding-bottom: 10px;"  class="block-content block-content-full font-s12 text-center" >
+                        2018 &copy; <span class="text-danger">&hearts;</span> 迅达电梯 
+                    </div>
+            </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+  <div (click)="backClick()" class="back">返回</div>
+
+  <div class="content">
+
+      <div class="weather">
+        <div class="icon">
+          <div class="fs1" aria-hidden="true" data-icon="&#x25;"></div>
+        </div>
+
+        <div class="temp">
+          19 <span> ℃</span>
+        </div>
+
+        <div class="temp-more">
+          <div>
+          湿度：62%风向：东南风 3级紫外线：强
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="news-list">
+          <div *ngFor="let news of items" class="news-item">
+            <div class="news-image">
+              <img [src]="news.image" alt="{{news.title}}">
+            </div>
+
+            <div class="news-title">
+              {{news.title}}
+            </div>
+          </div>
+      </div>
+  </div>
+</div>

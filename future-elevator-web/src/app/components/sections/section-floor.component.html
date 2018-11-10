@@ -1,0 +1,14 @@
+<div class="container">
+    <div (click)="backClick()" class="back">返回</div>
+
+    <div class="item-list">
+
+      <div *ngFor="let item of items" class="item" (click)="itemClick(item)">
+       
+        <div class="title">
+        {{item.title}}
+
+        </div>
+      </div>
+    </div>
+</div>

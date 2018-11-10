@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="arrow-left"></div>
+  <div class="item" *ngFor="let item of items" (click)="itemClick(item)">
+      <div class="title">{{item.title}}</div>
+  </div>
+<div class="arrow-right"></div>
+</div>
