@@ -1,5 +1,7 @@
 <div id="pointer">
-  指针
+  <div id="pointer-outer" class="outer">
+     <div id="pointer-inner" class="inner"></div>
+  </div>
 </div>
 <div id="app" style="z-index:-1;" class="show-hands">
   <!-- <button id="showHands">Show Hands</button>
@@ -39,7 +41,10 @@
 
 <div class="container">
     <ng-container *ngIf="step==0">
-      <section-title #title (itemChange)="titleChange($event)"></section-title>
+      <section-title #title
+         (itemChange)="titleChange($event)"
+         (titleGestureChange) = "titleGesture($event)"
+         ></section-title>
   </ng-container>
   
   <ng-container *ngIf="step==1">

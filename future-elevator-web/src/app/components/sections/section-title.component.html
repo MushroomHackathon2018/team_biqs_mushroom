@@ -1,6 +1,6 @@
-<div class="container">
+<div id="title-container" class="container">
   <div class="arrow-left"></div>
-  <div class="item" *ngFor="let item of items" (click)="itemClick(item)">
+  <div class="item" [attr.url]="item.url" *ngFor="let item of items" (click)="itemClick(item)">
       <div class="title">{{item.title}}</div>
   </div>
 <div class="arrow-right"></div>

@@ -25,6 +25,7 @@
     position: absolute;
     left: 50%;
     top: 50%;
+    opacity: 1;
     width: 40em;
     height: 40em;
     margin: -20em 0 0 -20em;
@@ -170,4 +171,23 @@
 
   #pointer {
     position: absolute;
+    
+    .outer {
+      width: 30px;
+      height: 30px;
+      display:flex;
+      .inner {
+        width: 20px;
+        margin: auto;
+        height: 20px;
+        background-color: #ffffff91;
+        border-radius: 50%;
+    
+      }
+    }
+    .outer.active {
+      
+      border-radius: 50%;
+      border: 2px solid #ffffff94;
+    }
   }
