@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
           // this.stream.stop();
 
           setTimeout(()=>{
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/ui']);
               
           },500);
         }
@@ -109,9 +109,9 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
       console.error(error);
     });
 
-    setTimeout(()=>{
-      this.router.navigate(['/ui']);
-    },1000);
+    // setTimeout(()=>{
+    //   this.router.navigate(['/ui']);
+    // },1000);
   }
 
    /** 

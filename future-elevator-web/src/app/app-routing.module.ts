@@ -3,6 +3,7 @@ import { LoginComponent } from './components/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UiComponentComponent } from './components/ui-component.component';
+import { FaceComponent } from './components/face.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'train',
     component: TrainComponent
+  },
+  {
+    path: 'face',
+    component: FaceComponent
   }
 ];
 

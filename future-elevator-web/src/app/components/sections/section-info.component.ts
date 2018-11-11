@@ -25,11 +25,88 @@ export class SectionInfoComponent implements OnInit {
     image: 'http://img1.gtimg.com/ninja/2/2018/11/ninja154180897671255.jpg',
   }]
 
+
+  gestureItem = null;
+  gestureTime = 0;
+
+  @Output()
+  gestureChange: EventEmitter<any> = new EventEmitter();
+
+
   ngOnInit() {
   }
 
 
   backClick() {
     this.back.emit();
+  }
+
+
+
+   /**
+   * 手势控制
+   * @param type  类型  move ,  click  , swipe_left , swipe_right
+   * @param point 
+   *    left,top
+   */
+  handerCursor(type,point) {
+    switch(type) {
+      case 'move':
+        
+
+        var back = document.querySelectorAll(".back");
+        back.forEach(item =>{
+          var rect = item.getBoundingClientRect();
+
+          if(rect.left < point.left && rect.right > point.left && rect.top < point.top && rect.bottom > point.top) {
+              item.classList.add("active")
+              var title ='back';
+              this.gestureItem = item;
+              if(this.gestureTime == 0) {
+                this.gestureTime = new Date().getTime();
+
+              }
+              var time = this.gestureTime;
+
+              this.gestureChange.emit({
+                title,
+                time
+              })
+          } else {
+              item.classList.remove("active")
+              if(this.gestureItem && this.gestureItem == item) {
+                this.gestureTime = 0;
+
+              }
+          }
+        
+        })
+
+      break;
+    }
+  }
+
+  handerClick(title) {
+    if(title == 'back') {
+      this.backClick();
+    } 
+    
+  }
+
+  removeCursor() {
+    var items = document.querySelectorAll(".container > .item")
+    this.gestureItem = null;
+    this.gestureTime = 0;
+    items.forEach(item => {
+      item.classList.remove("active")
+    })
+
+
+    var back = document.querySelectorAll(".back");
+    back.forEach(item =>{
+
+      item.classList.remove("active")
+    
+    })
   }
 }

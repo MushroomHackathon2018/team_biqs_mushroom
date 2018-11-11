@@ -1,0 +1,73 @@
+<nz-card nzTitle="人脸训练工具">
+  <nz-row [nzGutter]="8">
+    <nz-col [nzSpan]="12" >
+      <span>未训练人员:</span>
+      
+
+      
+      <nz-select [(ngModel)]="selectStudent"  name="selectStudent" style="width: 200px;" nzPlaceHolder="选择人员" nzAllowClear>
+        <nz-option
+          *ngFor="let item of students_untrain"
+          [nzLabel]="item.name"
+          [nzValue]="item">
+        </nz-option>
+      </nz-select>
+
+      <span style="margin-left: 50px;">已训练人员:</span> <nz-select [(ngModel)]="selectTrainStudent" name="selectStudent" style="width: 200px;" nzPlaceHolder="选择人员" nzAllowClear>
+          <nz-option
+            *ngFor="let item of students_train"
+            [nzLabel]="item.name"
+            [nzValue]="item">
+          </nz-option>
+        </nz-select>
+      
+    </nz-col>
+
+    
+  </nz-row>
+
+  <nz-row [nzGutter]="8">
+      <div style="text-align: center;margin-top:20px;">
+          <video id="screenshot-video" autoplay style="width: 500px;"></video>
+      
+          <div></div>
+          <button class="btn-submit" nzSize="large" [disabled]="!selectStudent" (click)="train()" nz-button>新建信息</button>
+          <button class="btn-submit" nzSize="large" [disabled]="!selectTrainStudent" (click)="train_extra()" nz-button>增量训练</button>
+          <button class="btn-submit" nzSize="large" (click)="identify()" nz-button>检测</button>
+
+          <nz-popconfirm [nzTitle]="'确定要删除数据吗？'" 
+              (nzOnConfirm)="delete()" >
+            <button class="btn-submit" [disabled]="!selectTrainStudent" nz-button nz-popconfirm nzSize="large"  nz-button>删除数据</button>
+              
+              
+            </nz-popconfirm>
+              <!-- -->
+      </div>
+  </nz-row>
+  <nz-row [nzGutter]="8">
+      <div *ngIf="selectStudent" nz-col nzSpan="12" nzOffset="6">
+          训练对象 -> 姓名:  {{selectStudent.name}},  PersonId: {{selectStudent.personId}}
+        </div>
+  </nz-row>
+  <p>
+    <br>
+    <br>
+  </p>
+  <nz-row [nzGutter]="8" *ngIf="identifyStudent">
+     
+      <div  nz-col nzSpan="12" nzOffset="6">
+          检测结果 -> 姓名:  {{identifyStudent.name}},  PersonId: {{identifyStudent.personId}}
+        </div>
+        <div  nz-col nzSpan="12" nzOffset="6">
+            {{identifyMessage}}
+          </div>
+
+       
+  </nz-row>
+  <nz-row [nzGutter]="8" *ngIf="!identifyResult">
+     
+      <div  nz-col nzSpan="12" nzOffset="6">
+           无检测结果
+        </div>
+  </nz-row>
+</nz-card>

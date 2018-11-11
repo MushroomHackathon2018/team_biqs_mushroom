@@ -1,9 +1,10 @@
-<div class="container">
-  <div (click)="backClick()" class="back">返回</div>
+<div class="scene-container">
+    <div (click)="backClick()" class="back">返回</div>
+
 
   <div class="item-list">
 
-    <div *ngFor="let item of items" class="item" (click)="itemClick(item)">
+    <div *ngFor="let item of items" class="item" [attr.url]="item.url" (click)="itemClick(item)">
      
       <div class="title">
         {{item.title}}

@@ -33,11 +33,11 @@ export class CourseService {
     /**
    * 学生列表
    */
-  students(): Observable<any> {
-    return this.httpClient.get(`${this.api}students`)
+  users(): Observable<any> {
+    return this.httpClient.get(`${this.api}users`)
   }
 
-  studentsTrain(): Observable<any> {
+  usersTrain(): Observable<any> {
     return this.httpClient.get(`${this.api}person_ids`);
   }
 

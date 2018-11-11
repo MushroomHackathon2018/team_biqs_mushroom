@@ -24,14 +24,20 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "src/styles.less",
               "src/assets/css/bootstrap.min.css",
               "src/assets/css/ares.css",
               "src/assets/css/animate.min.css",
-              "src/assets/css/font.css"
+              "src/assets/css/font.css",
+              "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
             ],
             "scripts": [
               "src/assets/lib/leap-0.6.4.min.js"

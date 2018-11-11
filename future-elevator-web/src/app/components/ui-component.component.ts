@@ -1,7 +1,9 @@
+import { SectionSceneComponent } from './sections/section-scene.component';
+import { SectionFloorComponent } from './sections/section-floor.component';
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {timingSafeEqual} from 'crypto';
 
 import {SectionTitleComponent} from './sections/section-title.component';
+import { SectionInfoComponent } from './sections/section-info.component';
 
 declare var Leap;
 @Component({
@@ -23,6 +25,12 @@ export class UiComponentComponent implements OnInit {
 
 
   @ViewChild('title') title: SectionTitleComponent;
+
+  @ViewChild('floor')  floor: SectionFloorComponent;
+
+  @ViewChild('scene')  scene: SectionSceneComponent;
+
+  @ViewChild('info')  info: SectionInfoComponent;
 
   ngOnInit() {
     console.log(' leap:', Leap);
@@ -190,31 +198,16 @@ export class UiComponentComponent implements OnInit {
   }
 
   handleCursor(point) {
-    this.points.push(point);
-    if (this.points.length > 10) {
-      this.points = this.points.splice(this.points.length - 10);
-    }
+    // this.points.push(point);
+    // if (this.points.length > 10) {
+    //   this.points = this.points.splice(this.points.length - 10);
+    // }
 
     /**
      * 计算手势轨迹
      */
 
 
-     var angles = [];
-    for(var i =1 ; i< this.points.length;i++) {
-        var p1 = this.points[i-1];
-        var p2 = this.points[i];
-
-        var angle = this.getAngle(p1,p2);
-
-        angles.push(angle);
-    }
-
-    var strs = [];
-    for(var i =0;i< angles.length;i++) {
-      strs.push(angles[i].toFixed(0));
-    }
-    //console.log('angles:',strs);
 
     var els = document.getElementById('pointer');
     els.style.display = '';
@@ -227,10 +220,21 @@ export class UiComponentComponent implements OnInit {
     if (this.step == 0 && this.title) {
       this.title.handerCursor(type, point);
     }
+    if( this.step == 1 && this.floor) {
+      this.floor.handerCursor(type,point);
+    }
+
+    if(this.step == 2 && this.scene) {
+      this.scene.handerCursor(type,point);
+    }
+
+    if(this.step == 3 && this.info) {
+      this.info.handerCursor(type,point);
+    }
   }
 
 
-  titleGesture(params) {
+  gesture(params) {
     //console.log('title gesture:',params);
 
     var time = params['time'];
@@ -241,9 +245,9 @@ export class UiComponentComponent implements OnInit {
     var startTime = 500;
     var exeTime = 1500;
 
-    console.log('diff:',diff)
+    //console.log('diff:',diff)
     if(diff > startTime && diff < exeTime) {
-      console.log(' start ...')
+      //console.log(' start ...')
       var els = document.getElementById('pointer-outer');
       els.classList.add("active");
 
@@ -257,16 +261,16 @@ export class UiComponentComponent implements OnInit {
     } else if(diff>=exeTime) {
        console.log('click....')
 
-       if(this.title) {
-         this.title.handerClick(params['url']);
-
+      
          var els = document.getElementById('pointer-outer');
           els.classList.remove("active");
           var inner = document.getElementById('pointer-inner');
 
           inner.style.width = "20px"
           inner.style.height = "20px"
-       }
+
+          this.handerGestureClick(params);
+       
     } else {
       var els = document.getElementById('pointer-outer');
       els.classList.remove("active");
@@ -274,6 +278,22 @@ export class UiComponentComponent implements OnInit {
 
       inner.style.width = "20px"
       inner.style.height = "20px"
+    }
+  }
+
+  handerGestureClick(params) {
+    if(this.step == 0) {
+      this.title.handerClick(params['url']);
+    }
+    if(this.step == 1) {
+      this.floor.handerClick(params['title']);
+    }
+    if(this.step == 2) {
+      this.scene.handerClick(params['url']);
+    }
+
+    if(this.step == 3 ) {
+      this.info.handerClick(params['title']);
     }
   }
 

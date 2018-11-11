@@ -43,19 +43,19 @@
     <ng-container *ngIf="step==0">
       <section-title #title
          (itemChange)="titleChange($event)"
-         (titleGestureChange) = "titleGesture($event)"
+         (titleGestureChange) = "gesture($event)"
          ></section-title>
   </ng-container>
   
   <ng-container *ngIf="step==1">
-    <section-floor #floor (back)="backToTitle()"></section-floor>
+    <section-floor #floor (back)="backToTitle()" (gestureChange) = "gesture($event)"></section-floor>
   </ng-container>
   
   <ng-container *ngIf="step==2">
-    <section-scene #scene  (back)="backToTitle()"></section-scene>
+    <section-scene #scene  (back)="backToTitle()" (gestureChange) = "gesture($event)"></section-scene>
   </ng-container>
   
   <ng-container *ngIf="step==3">
-    <section-info #info  (back)="backToTitle()"></section-info>
+    <section-info #info  (back)="backToTitle()" (gestureChange) = "gesture($event)"></section-info>
   </ng-container>
   </div>

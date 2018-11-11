@@ -1,3 +1,4 @@
+import { FaceComponent } from './components/face.component';
 import { UserInfoService } from './services/user-info.service';
 import { CourseService } from './services/course.service';
 import { LoginComponent } from './components/login.component';
@@ -16,6 +17,15 @@ import { SectionSceneComponent } from './components/sections/section-scene.compo
 import { SectionInfoComponent } from './components/sections/section-info.component';
 import { TrainComponent } from './components/train.component';
 
+import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
+
+
+/** 配置 angular i18n **/
+import { registerLocaleData } from '@angular/common';
+import zh from '@angular/common/locales/zh';
+import { FormsModule } from '@angular/forms';
+registerLocaleData(zh);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,17 +35,21 @@ import { TrainComponent } from './components/train.component';
     SectionFloorComponent,
     SectionSceneComponent,
     SectionInfoComponent,
-    TrainComponent
+    TrainComponent,
+    FaceComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgZorroAntdModule
   ],
   providers: [
     CourseService,
-    UserInfoService
+    UserInfoService,
+    { provide: NZ_I18N, useValue: zh_CN } 
   ],
   bootstrap: [AppComponent]
 })
