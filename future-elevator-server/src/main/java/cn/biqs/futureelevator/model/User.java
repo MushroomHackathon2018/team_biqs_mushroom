@@ -1,4 +1,4 @@
-package com.qianguatech.edu.model;
+package cn.biqs.futureelevator.model;
 
 import lombok.Data;
 
@@ -7,7 +7,7 @@ import lombok.Data;
  * @author liangdi
  */
 @Data
-public class Student {
+public class User {
     public String name;
     public String personId;
     public String avator;
